@@ -1,0 +1,8 @@
+Global Creation context
+function creation context
+
+
+Global Creation context
+  1. Global execution (this) gets it value
+  2. Memory Phase--> all variables get undefined values
+  3. execution phase -->variables get assigned with values, functions gets execution context
