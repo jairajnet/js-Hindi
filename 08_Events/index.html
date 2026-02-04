@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Event</title>
+  </head>
+  <body>
+    <div class="abc" style="width: 600px">
+      <input type="text" id="color" />
+    </div>
+    <ul>
+      <li>
+        <span id="sp1">Hello 1</span>
+      </li>
+      <li>
+        <span id="sp2">Hello 2</span>
+      </li>
+      <li>
+        <span id="sp3">Hello 3</span>
+      </li>
+      <li>
+        <span id="sp4">Hello 4</span>
+      </li>
+    </ul>
+  </body>
+  <script src="01_js.js"></script>
+  <script>
+    let clickedLi = document.querySelector("ul");
+    clickedLi.addEventListener("click", (e) => {
+      //console.log("hello");
+      //console.log(e.target);
+      //let sp = e.target.parentNode;
+      //sp.remove();
+      e.target.innerHTML = "Hello Jairaj";
+    });
+  </script>
+</html>

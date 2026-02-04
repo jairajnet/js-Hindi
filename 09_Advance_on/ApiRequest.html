@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body style="background-color: #868080; color: white">
+    <table style="width: 50%; border: solid 1px white; border-color: aliceblue">
+      <th>Value</th>
+      <th>State</th>
+      <th>Description</th>
+      <tr>
+        <td>0</td>
+        <td>UNSENT</td>
+        <td>
+          The object has been constructed, but the open() method has not been
+          called yet.
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>OPENED</td>
+        <td>
+          The open() method has been successfully invoked, but the send() method
+          has not been called.
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HEADERS_RECEIVED</td>
+        <td>
+          The send() method has been called, and all HTTP headers of the
+          response have been received. The response body is not yet available.
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>LOADING</td>
+        <td>
+          The response body is being received. Partial data may be available in
+          responseText (though not universally supported).
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>DONE</td>
+        <td>
+          The data transfer has been completed, and the response is ready for
+          processing, whether the request succeeded or failed.
+        </td>
+      </tr>
+    </table>
+    <hr />
+    <h2 id="login"></h2>
+    <table style="width: 50%; border: solid 1px white; border-color: aliceblue">
+      <tr>
+        <td rowspan="3">
+          <input
+            type="image"
+            alt="altImage"
+            id="image"
+            style="width: 200px; height: 200px"
+          />
+        </td>
+        <td>
+          <span id="name"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span id="login1"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span id="bio"></span>
+        </td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    const RequestUrl = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+
+    // get variables
+
+    xhr.open("GET", RequestUrl);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        const data = JSON.parse(this.responseText);
+        document.querySelector("#image").src = data.avatar_url;
+        document.querySelector("#name").innerHTML = data.name;
+        document.querySelector("#login1").innerHTML = data.login;
+        document.querySelector("#login").innerHTML = data.login;
+        document.querySelector("#bio").innerHTML = data.bio;
+
+        console.log(data);
+      }
+      //console.log(xhr.readyState);
+    };
+    xhr.send();
+    // console.log("Here");
+  </script>
+</html>

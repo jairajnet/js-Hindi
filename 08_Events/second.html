@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timer Workings</title>
+  </head>
+  <body>
+    <h1>Timer Workings</h1>
+    <button type="button" id="start">Start</button>
+    <button type="button" id="stop">Stop</button>
+  </body>
+  <script>
+    const start = document.querySelector("#start");
+    const stop = document.querySelector("#stop");
+
+    let intervalID = null;
+    let TimerID = null;
+
+    function StartInterval() {
+      console.log("interval started");
+      console.log(`int: ${intervalID}, timer : ${TimerID}`);
+
+      // if (intervalID || TimerID) return;
+      intervalID = setInterval(() => {
+        console.log(`log : ${Date.now()}`);
+      }, 1000);
+    }
+
+    start.addEventListener("click", () => {
+      if (intervalID || TimerID) return;
+      TimerID = setTimeout(() => {
+        StartInterval();
+      }, 2000);
+    });
+
+    // let intervalExecute = function () {
+    //   setInterval(() => {
+    //     console.log(`Log : ${Date.now()}`);
+    //   }, 1000);
+    // };
+    stop.addEventListener("click", () => {
+      clearTimeout(TimerID);
+      clearInterval(intervalID);
+      TimerID = null;
+      intervalID = null;
+    });
+  </script>
+</html>
